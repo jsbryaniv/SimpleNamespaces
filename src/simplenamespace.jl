@@ -11,14 +11,14 @@ For example:
 
 ### SimpleNamespace ### 
 struct SimpleNamespace
-    properties::Dict{String, Any}
+    properties::Dict{Symbol, Any}
 end
-SimpleNamespace(properties) = SimpleNamespace(Dict{String, Any}([(String(key), val) for (key, val) in pairs(properties)]))
+SimpleNamespace(properties) = SimpleNamespace(Dict{Symbol, Any}([(Symbol(key), val) for (key, val) in pairs(properties)]))
 SimpleNamespace(;kwargs...) = SimpleNamespace(kwargs)
 
 # Allow dot indexing to access properties
-Base.getproperty(x::SimpleNamespace, property::Symbol) = getfield(x, :properties)[String(property)]
-Base.setproperty!(x::SimpleNamespace, property::Symbol, value) = getfield(x, :properties)[String(property)] = value
+Base.getproperty(x::SimpleNamespace, property::Symbol) = getfield(x, :properties)[property]
+Base.setproperty!(x::SimpleNamespace, property::Symbol, value) = getfield(x, :properties)[property] = value
 
 # Allow property names and keys to be accessed using Base functions
 Base.propertynames(x::SimpleNamespace) = keys(getfield(x, :properties))

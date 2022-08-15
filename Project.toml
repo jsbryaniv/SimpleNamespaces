@@ -1,0 +1,4 @@
+name = "SimpleNamespaces"
+uuid = "d3458c95-1ac3-41d3-bc85-3c09f98c159b"
+authors = ["Shep Bryan IV <jsbryan4@asu.edu> and contributors"]
+version = "0.1.0"

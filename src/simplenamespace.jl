@@ -12,8 +12,8 @@ For example:
 ### SimpleNamespace ### 
 struct SimpleNamespace
     properties::Dict{Symbol, Any}
+    SimpleNamespace(properties) = SimpleNamespace(Dict{Symbol, Any}([(Symbol(key), val) for (key, val) in pairs(properties)]))
 end
-SimpleNamespace(properties) = SimpleNamespace(Dict{Symbol, Any}([(Symbol(key), val) for (key, val) in pairs(properties)]))
 SimpleNamespace(;kwargs...) = SimpleNamespace(kwargs)
 
 # Allow dot indexing to access properties

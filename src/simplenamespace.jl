@@ -10,12 +10,10 @@ For example:
 """
 
 ### SimpleNamespace ### 
+### SimpleNamespace ### 
 struct SimpleNamespace
     properties::Dict{Symbol, Any}
-    function SimpleNamespace(properties)
-        self = new()
-        self.properties = Dict{Symbol, Any}([(Symbol(key), val) for (key, val) in pairs(properties)])
-    end
+    SimpleNamespace(properties) = new(Dict{Symbol, Any}([(Symbol(key), val) for (key, val) in pairs(properties)]))
 end
 SimpleNamespace(;kwargs...) = SimpleNamespace(kwargs)
 

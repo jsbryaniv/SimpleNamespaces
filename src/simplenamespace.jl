@@ -12,7 +12,10 @@ For example:
 ### SimpleNamespace ### 
 struct SimpleNamespace
     properties::Dict{Symbol, Any}
-    SimpleNamespace(properties) = SimpleNamespace(Dict{Symbol, Any}([(Symbol(key), val) for (key, val) in pairs(properties)]))
+    function SimpleNamespace(properties)
+        self = new()
+        self.properties = Dict{Symbol, Any}([(Symbol(key), val) for (key, val) in pairs(properties)])
+    end
 end
 SimpleNamespace(;kwargs...) = SimpleNamespace(kwargs)
 
